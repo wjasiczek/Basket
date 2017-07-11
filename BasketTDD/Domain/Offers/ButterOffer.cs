@@ -18,5 +18,19 @@ namespace BasketTDD.Domain.Offers
                 return Math.Min(numberOfDiscounts, numberOfBreads) * breadPrice / 2 ?? 0;
             };
         }
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+                return false;
+
+            var butterOffer = obj as ButterOffer;
+
+            return butterOffer != null;
+        }
+
+        public bool Equals(ButterOffer butterOffer) => butterOffer != null;
+
+        public override int GetHashCode() => GetType().AssemblyQualifiedName.GetHashCode();
     }
 }

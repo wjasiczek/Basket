@@ -192,5 +192,28 @@ namespace BasketTDD.Tests
 
             Assert.AreEqual(9, total);
         }
+
+        [Test]
+        public void Basket_Duplicate_Offers_DoNot_Cumulate()
+        {
+            var basket = new Basket();
+            var products = Enumerable.Repeat(ProductMocks.Milk, 8).ToList();
+            products.AddRange(new List<Product>
+            {
+                ProductMocks.Bread,
+                ProductMocks.Butter,
+                ProductMocks.Butter
+            });
+            Enumerable.Repeat(ProductMocks.Milk, 8);
+            basket.AddProducts(products);
+            var butterOffer = new ButterOffer();
+            var milkOffer = new MilkOffer();
+
+            decimal total = basket
+                .WithOffers(butterOffer, milkOffer, milkOffer, butterOffer)
+                .GetTotal();
+
+            Assert.AreEqual(9, total);
+        }
     }
 }

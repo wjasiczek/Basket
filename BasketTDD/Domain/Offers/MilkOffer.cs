@@ -17,5 +17,19 @@ namespace BasketTDD.Domain.Offers
                 return numberOfDiscounts * milkPrice ?? 0;
             };
         }
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+                return false;
+
+            var milkOffer = obj as MilkOffer;
+
+            return milkOffer != null;
+        }
+
+        public bool Equals(MilkOffer milkOffer) => milkOffer != null;
+
+        public override int GetHashCode() => GetType().AssemblyQualifiedName.GetHashCode();
     }
 }
