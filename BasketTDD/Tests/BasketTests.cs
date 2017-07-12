@@ -14,7 +14,7 @@ namespace BasketTDD.Tests
         {
             var product = ProductMocks.Bread;
 
-            Assert.AreEqual("Bread", product.Name);
+            Assert.AreEqual(ApplicationConstants.Bread, product.Name);
             Assert.AreEqual(1m, product.Cost);
         }
 

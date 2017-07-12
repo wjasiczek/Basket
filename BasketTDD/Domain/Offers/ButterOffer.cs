@@ -10,10 +10,10 @@ namespace BasketTDD.Domain.Offers
         {
             return products =>
             {
-                var numberOfButters = products.Count(product => product.Name == "Butter");
+                var numberOfButters = products.Count(product => product.Name == ApplicationConstants.Butter);
                 var numberOfDiscounts = numberOfButters / 2;
-                var numberOfBreads = products.Count(product => product.Name == "Bread");
-                var breadPrice = products.FirstOrDefault(product => product.Name == "Bread")?.Cost;
+                var numberOfBreads = products.Count(product => product.Name == ApplicationConstants.Bread);
+                var breadPrice = products.FirstOrDefault(product => product.Name == ApplicationConstants.Bread)?.Cost;
 
                 return Math.Min(numberOfDiscounts, numberOfBreads) * breadPrice / 2 ?? 0;
             };
